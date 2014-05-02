@@ -68,33 +68,16 @@ $(document).ready(function(){
 	
 	//Save/Load:
 	$("#save").click(function(){
-		var tempString = "";
-		tempString = tempString+tempo+"|"+timer+"|";
-		for(var i = 0;i < noteList.length;i++){
-			tempString = tempString+noteList[i].actualX+"|"+noteList[i].x+"|"+noteList[i].y+"|"+noteList[i].frequency+"|";
-		}
-		document.getElementById("io").value = tempString;
+		document.getElementById("io").value = tempo+"|"+timer+"|"+JSON.stringify(noteList);
 	});
 	
 	$("#load").click(function(){
-		var temppString = document.getElementById("io").value;
-		var tempArray = temppString.split("|");
+		var tempArray = document.getElementById("io").value.split("|");
 		tempo = parseFloat(tempArray[0]);
 		timer = parseFloat(tempArray[1]);
 		document.getElementById("dist").value = tempo;
 		document.getElementById("time").value = timer/1000;
-		noteList.length = 0;
-		var count = 2;
-		while(count < tempArray.length){
-			var newNote = new note(5,5);
-			newNote.actualX=parseFloat(tempArray[count]);
-			newNote.x=parseFloat(tempArray[count+1]);
-			newNote.y=parseFloat(tempArray[count+2]);
-			newNote.frequency=parseFloat(tempArray[count+3]);
-			noteList.push(newNote);
-			count+=4;
-		}
-		noteList.pop();
+		noteList = JSON.parse(tempArray[2]);
 		redraw();
 	});
 	
@@ -132,7 +115,7 @@ $(document).ready(function(){
 		oscillator.stop(currTime + releaseValue);
 	}
 	
-	$(document).mousemove(function(evnt){
+	$("#soundCanv").mousemove(function(evnt){
 		if(dragging===true){
 			var mov = evnt.pageX-mouse.x
 			if(Math.abs(mov)>1) doNote=false;
@@ -151,6 +134,8 @@ $(document).ready(function(){
 		else{};
 		mouse.x = evnt.pageX;
 		mouse.y = evnt.pageY;
+		howFarRight = evnt.target.offsetLeft+8;
+		howFarDown = evnt.target.offsetTop+8;
 		mouse.cvX = mouse.x-howFarRight;
 		mouse.cvY = mouse.y-howFarDown;
 	});
