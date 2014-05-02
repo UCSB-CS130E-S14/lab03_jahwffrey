@@ -1,0 +1,47 @@
+<!Doctype HTML>
+<html>
+	<head>
+		<title>SOUND</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="soundCode.js"></script>
+	</head>
+	<body>
+		<div id = "canvasDiv">
+			<canvas id = "soundCanv" width="1200" height="120" ></canvas>
+		</div>
+		<div id = "go">
+			GO!
+		</div>
+		<table>
+			<td>
+				<div id = "snap" class = "greey">
+					Snap to Notes: No
+				<div>
+			</td>
+			<td>
+				<div id = "tempo">
+					<span id = "tempy">Tempo:</span><br>
+					Go <input id = "dist" type = "number" value = 100>Pixels<br>
+					In <input id = "time" type = "number" value = .5>Seconds
+				</div>
+			</td>
+			<td>
+				<div id = "togDel" class = "greey">
+					Delete Notes
+				</div>
+			</td>
+			<td>
+				<div id = "save" class = "fio">
+					SAVE
+				</div>
+				<div id = "load" class = "fio">
+					LOAD
+				</div>
+			</td>
+			<td>
+				<textarea id = "io" placeholder = "Copy/Paste Correctly Formatted Text" rows = 5 cols = 40></textarea>
+			</td>
+		</table>
+	</body>
+</html>
