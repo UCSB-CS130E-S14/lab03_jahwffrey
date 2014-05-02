@@ -1,4 +1,4 @@
-lab03_jahwffrey
+CS130E-S14-Labs
 ===============
 
-lab03 for John Thomason
+labs for CS130E-S14
